@@ -32,6 +32,7 @@ from . import env  # noqa: F401  -- loads backend/.env before anything else
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
+from starlette.concurrency import run_in_threadpool
 from pydantic import BaseModel, Field, field_validator
 
 from . import storage, course_recommender, placements_agent, gamification, auth, llm
@@ -58,7 +59,8 @@ async def require_session(request: Request, call_next):
     if m and request.method != "OPTIONS":
         header = request.headers.get("authorization", "")
         token = header[7:].strip() if header.lower().startswith("bearer ") else None
-        owner = auth.student_for_token(token)
+        # DB lookup runs in the threadpool so it never blocks other requests
+        owner = await run_in_threadpool(auth.student_for_token, token)
         if owner is None:
             return JSONResponse({"detail": "Your session has expired. Please log in again."}, status_code=401)
         if owner != m.group(2):

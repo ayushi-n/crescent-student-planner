@@ -42,7 +42,19 @@ _lock = threading.RLock()
 _conn = None
 
 # Postgres (e.g. Neon on Vercel) when DATABASE_URL/POSTGRES_URL is set, else SQLite.
-DATABASE_URL = (os.environ.get("DATABASE_URL") or os.environ.get("POSTGRES_URL") or "").strip()
+def _database_url() -> str:
+    # Prefer a direct (non-pooled) connection: pg8000 caches prepared statements
+    # per connection, which breaks behind a transaction pooler such as Neon's
+    # "-pooler" endpoint (concurrent queries can get each other's results).
+    for key in ("DATABASE_URL_UNPOOLED", "DATABASE_POSTGRES_URL_NON_POOLING", "POSTGRES_URL_NON_POOLING",
+                "DATABASE_URL", "POSTGRES_URL"):
+        url = (os.environ.get(key) or "").strip()
+        if url:
+            return url.replace("-pooler.", ".", 1)
+    return ""
+
+
+DATABASE_URL = _database_url()
 USE_POSTGRES = DATABASE_URL.startswith(("postgres://", "postgresql://"))
 
 _SCHEMA = [
