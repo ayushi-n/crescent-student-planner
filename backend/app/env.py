@@ -38,3 +38,12 @@ def load_env() -> None:
 
 
 load_env()
+
+import time as _time
+
+# Plans use local time. Vercel servers run on UTC, so set APP_TIMEZONE
+# (e.g. "IST-5:30" for India) to make "today" and session times local.
+_tz = os.environ.get("APP_TIMEZONE")
+if _tz:
+    os.environ["TZ"] = _tz
+    _time.tzset()
