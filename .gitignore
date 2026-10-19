@@ -1,0 +1,26 @@
+# Backend
+venv/
+.venv/
+backend/venv/
+**/__pycache__/
+backend/.env
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
+backend/data/legacy_json_backup/
+backend/data/students/*.json
+!backend/data/students/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*

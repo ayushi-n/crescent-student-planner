@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Marble textures.
+   Each is an SVG turbulence filter (thin "veins" where the noise crosses a few
+   thresholds) layered over a palette gradient. They're static images, so they
+   cost nothing once painted.
+   ------------------------------------------------------------------------- */
+:root {
+  --veins-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' stitchTiles='stitch' baseFrequency='0.0035 0.009' numOctaves='5' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 .55 0 0 0 0 .35 0 0 0 0 .5 0 0'/%3E%3C/feComponentTransfer%3E%3CfeGaussianBlur stdDeviation='.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.2'/%3E%3C/svg%3E");
+  --veins-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' stitchTiles='stitch' baseFrequency='0.0028 0.011' numOctaves='5' seed='21'/%3E%3CfeColorMatrix values='0 0 0 0 .89 0 0 0 0 .76 0 0 0 0 .62 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 .7 0 0 0 0 0 .45 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.35'/%3E%3C/svg%3E");
+  --veins-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' stitchTiles='stitch' baseFrequency='0.0025 0.01' numOctaves='5' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 .7 0 0 0 0 0 .5 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.6'/%3E%3C/svg%3E");
+  --veins-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' stitchTiles='stitch' baseFrequency='0.003 0.008' numOctaves='5' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .29 0 0 0 0 .39 0 0 0 0 .51 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 .5 0 0 0 0 0 .4 0 0 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.08'/%3E%3C/svg%3E");
+}
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  /* grid items default to min-width:auto, which lets wide children (scrollers, charts) blow out the layout on phones */
+  .grid > * { min-width: 0; }
+  body {
+    @apply bg-paper text-night-700 antialiased;
+    background-image: var(--veins-paper), linear-gradient(180deg, #F3F5F7 0%, #E9EDF1 100%);
+    background-size: 900px 900px, cover;
+    background-attachment: fixed;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, .font-display {
+    font-variation-settings: "SOFT" 100, "WONK" 0;
+  }
+  ::selection { background: #E3C39D; color: #071739; }
+  :focus-visible { outline: 2px solid #4B6382; outline-offset: 2px; border-radius: 6px; }
+  * { scrollbar-width: thin; scrollbar-color: #A4B5C4 transparent; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #B8C5D0; border-radius: 8px; }
+}
+
+@layer components {
+  .marble-night {
+    background-color: #071739;
+    background-image: var(--veins-light),
+      radial-gradient(110% 70% at 85% -10%, rgba(75,99,130,.75) 0%, transparent 60%),
+      radial-gradient(70% 60% at 0% 110%, rgba(166,136,104,.25) 0%, transparent 60%),
+      linear-gradient(160deg, #071739 0%, #0F2148 55%, #243144 100%);
+    background-size: 800px 800px, cover, cover, cover;
+  }
+  .marble-dusk {
+    background-color: #4B6382;
+    background-image: var(--veins-light), linear-gradient(135deg, #3D5270 0%, #4B6382 45%, #A4B5C4 120%);
+    background-size: 800px 800px, cover;
+  }
+  .marble-sand {
+    background-color: #E3C39D;
+    background-image: var(--veins-white), linear-gradient(135deg, #F6EBDC 0%, #E3C39D 45%, #A68868 110%);
+    background-size: 700px 700px, cover;
+  }
+  .marble-mist {
+    background-color: #E6EBF0;
+    background-image: var(--veins-white), linear-gradient(150deg, #F4F6F8 0%, #CDD5DB 60%, #A4B5C4 140%);
+    background-size: 700px 700px, cover;
+  }
+  .gold-veins { background-image: var(--veins-gold); background-size: 800px 800px; }
+
+  /* Paper surfaces -- the app's cards. Slight top highlight like folded paper. */
+  .paper-card {
+    @apply relative rounded-3xl border border-white/70 bg-white/80 shadow-paper backdrop-blur-sm;
+  }
+  .paper-card-solid { @apply relative rounded-3xl border border-mist-100 bg-white shadow-paper; }
+
+  .text-gradient-night { @apply bg-gradient-to-br from-night-700 via-dusk-600 to-dusk-400 bg-clip-text text-transparent; }
+  .text-gradient-moon { @apply bg-gradient-to-br from-sand-200 via-sand-300 to-sand-600 bg-clip-text text-transparent; }
+
+  .input {
+    @apply w-full rounded-2xl border border-mist-200 bg-white/90 px-4 py-2.5 text-sm text-night-700 outline-none transition
+           placeholder:text-mist-500 hover:border-mist-300 focus:border-dusk-400 focus:bg-white focus:ring-4 focus:ring-dusk-100;
+  }
+  .label { @apply mb-1.5 block text-[13px] font-semibold text-dusk-700; }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition;
+  }
+  .skeleton {
+    @apply rounded-xl;
+    background: linear-gradient(90deg, #E6EBF0 25%, #F4F6F8 50%, #E6EBF0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+}
+
+/* Doodles: hand-drawn strokes */
+.doodle { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+
+@keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Dark mode (html.dark). The palette stays the same -- surfaces move to the
+   navy end, text to the mist end. Components use the same token classes in
+   both modes, so the remapping lives here in one place.
+   ------------------------------------------------------------------------- */
+html.dark body {
+  color: #E6EBF0;
+  background-color: #071739;
+  background-image: var(--veins-light), radial-gradient(90% 60% at 80% -10%, rgba(75,99,130,.35), transparent 60%), linear-gradient(180deg, #0B1C42 0%, #071739 100%);
+  background-size: 800px 800px, cover, cover;
+}
+html.dark .paper-card { background: rgba(19,37,74,.82); border-color: rgba(255,255,255,.06); box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 12px 30px -16px rgba(0,0,0,.6); }
+html.dark .paper-card-solid { background: #12244A; border-color: rgba(255,255,255,.06); box-shadow: 0 12px 30px -16px rgba(0,0,0,.6); }
+html.dark .bg-white, html.dark .bg-white\/95, html.dark .bg-white\/90, html.dark .bg-white\/85, html.dark .bg-white\/80, html.dark .bg-white\/70 { background-color: #13254A; }
+html.dark .bg-white\/60 { background-color: rgba(19,37,74,.6); }
+html.dark .bg-paper\/75 { background-color: rgba(7,23,57,.78); }
+html.dark .border-white\/60, html.dark .border-white\/70, html.dark .border-white, html.dark .ring-white { border-color: rgba(255,255,255,.06); --tw-ring-color: rgba(255,255,255,.06); }
+html.dark .bg-paper\/60, html.dark .bg-mist-50, html.dark .bg-mist-50\/80, html.dark .bg-mist-50\/70, html.dark .bg-mist-50\/60 { background-color: #182C55; }
+html.dark .bg-mist-100, html.dark .bg-mist-100\/80 { background-color: #1D3360; }
+html.dark .bg-mist-200 { background-color: #27406E; }
+html.dark .hover\:bg-mist-50:hover, html.dark .hover\:bg-white:hover, html.dark .hover\:bg-white\/80:hover, html.dark .group:hover .group-hover\:bg-mist-50 { background-color: #1D3360; }
+html.dark .bg-dusk-50 { background-color: rgba(75,99,130,.22); }
+html.dark .bg-night-50 { background-color: rgba(164,181,196,.12); }
+html.dark .bg-sand-50, html.dark .bg-sand-50\/70 { background-color: rgba(227,195,157,.1); }
+html.dark .bg-sand-100 { background-color: rgba(227,195,157,.16); }
+html.dark .bg-ember-50, html.dark .bg-ember-50\/80 { background-color: rgba(180,88,79,.18); }
+html.dark .ring-mist-100, html.dark .ring-mist-200, html.dark .ring-dusk-100, html.dark .ring-sand-200, html.dark .ring-ember-100 { --tw-ring-color: rgba(255,255,255,.08); }
+html.dark .border-mist-100, html.dark .border-mist-200, html.dark .border-mist-300 { border-color: rgba(255,255,255,.08); }
+
+html.dark .text-night-700, html.dark .text-night-600 { color: #EEF1F5; }
+html.dark .text-dusk-800, html.dark .text-dusk-700 { color: #CDD5DB; }
+html.dark .text-dusk-600, html.dark .text-dusk-500 { color: #A4B5C4; }
+html.dark .text-mist-700, html.dark .text-mist-600 { color: #94A6BD; }
+html.dark .text-sand-900, html.dark .text-sand-800, html.dark .text-sand-700 { color: #E3C39D; }
+html.dark .text-ember-600 { color: #E8A39B; }
+html.dark .decoration-sand-400 { text-decoration-color: #A68868; }
+
+/* keep dark text on light/sand surfaces */
+html.dark .marble-sand, html.dark .marble-sand .text-night-700, html.dark .marble-sand.text-night-700,
+html.dark .marble-mist.text-night-700, html.dark .marble-mist .text-night-700,
+html.dark .bg-sand-300.text-night-700, html.dark .bg-sand-300 .text-night-700,
+html.dark .marble-sand .text-sand-900 { color: #071739; }
+html.dark .marble-sand .text-mist-600, html.dark .marble-sand .text-sand-800 { color: #463829; }
+
+html.dark .input { background-color: #0F2148; color: #EEF1F5; border-color: rgba(255,255,255,.1); }
+html.dark .input:focus { background-color: #13254A; --tw-ring-color: rgba(75,99,130,.4); }
+html.dark .input:disabled { background-color: #13254A; color: #94A6BD; }
+html.dark .label { color: #B9C5D5; }
+html.dark select.input option { background: #0F2148; }
+html.dark .skeleton { background: linear-gradient(90deg, #182C55 25%, #1D3360 50%, #182C55 75%); background-size: 200% 100%; }
+html.dark .marble-night { box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+html.dark ::-webkit-scrollbar-thumb { background: #30415A; }
+html.dark code { color: #071739; }
+.text-on-sand, html.dark .text-on-sand { color: #071739; }

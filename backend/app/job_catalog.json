@@ -1,0 +1,308 @@
+{
+  "jobs": [
+    {
+      "id": "job_001",
+      "company": "Acme Systems",
+      "role": "Software Engineer Intern",
+      "package": "₹10 LPA (intern stipend ₹40k/mo)",
+      "min_cgpa": 7.0,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "python",
+        "data structures",
+        "sql"
+      ],
+      "deadline": null,
+      "description": "Backend-focused internship building services in Python with a strong DSA bar.",
+      "rounds": [
+        "resume",
+        "aptitude",
+        "coding",
+        "interview1",
+        "interview2",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_002",
+      "company": "Nimbus Cloud",
+      "role": "Cloud Engineer",
+      "package": "₹12 LPA",
+      "min_cgpa": 7.5,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology",
+        "Electronics"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "cloud",
+        "aws",
+        "linux",
+        "python"
+      ],
+      "deadline": null,
+      "description": "Deploying and operating cloud infrastructure for a mid-size SaaS platform.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_003",
+      "company": "DataForge Analytics",
+      "role": "Data Analyst",
+      "package": "₹8.5 LPA",
+      "min_cgpa": 6.5,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology",
+        "Data Science"
+      ],
+      "max_backlogs": 1,
+      "required_skills": [
+        "sql",
+        "python",
+        "data visualization"
+      ],
+      "deadline": null,
+      "description": "Turning raw operational data into dashboards and reports for business teams.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1"
+      ]
+    },
+    {
+      "id": "job_004",
+      "company": "Verity AI",
+      "role": "Machine Learning Engineer",
+      "package": "₹16 LPA",
+      "min_cgpa": 8.0,
+      "allowed_branches": [
+        "Computer Science",
+        "Data Science"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "machine learning",
+        "python",
+        "deep learning",
+        "statistics"
+      ],
+      "deadline": null,
+      "description": "Building and shipping ML models for a computer-vision product line.",
+      "rounds": [
+        "resume",
+        "aptitude",
+        "gd",
+        "interview1",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_005",
+      "company": "BrightPath Web",
+      "role": "Frontend Developer",
+      "package": "₹7 LPA",
+      "min_cgpa": 6.0,
+      "allowed_branches": [
+        "Any"
+      ],
+      "max_backlogs": 1,
+      "required_skills": [
+        "javascript",
+        "react",
+        "web development"
+      ],
+      "deadline": null,
+      "description": "Building customer-facing web experiences for a fast-growing D2C brand.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1",
+        "interview2",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_006",
+      "company": "SecureNet Labs",
+      "role": "Cybersecurity Analyst",
+      "package": "₹9 LPA",
+      "min_cgpa": 7.0,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology",
+        "Cybersecurity"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "security",
+        "networking"
+      ],
+      "deadline": null,
+      "description": "Monitoring, triaging, and responding to security incidents for enterprise clients.",
+      "rounds": [
+        "coding",
+        "interview1"
+      ]
+    },
+    {
+      "id": "job_007",
+      "company": "Orbit Logistics",
+      "role": "Product Management Intern",
+      "package": "₹6 LPA (intern stipend ₹25k/mo)",
+      "min_cgpa": 6.5,
+      "allowed_branches": [
+        "Any"
+      ],
+      "max_backlogs": 1,
+      "required_skills": [
+        "product management",
+        "communication"
+      ],
+      "deadline": null,
+      "description": "Supporting roadmap planning and stakeholder coordination for a logistics platform.",
+      "rounds": [
+        "resume",
+        "aptitude",
+        "coding",
+        "interview1",
+        "interview2",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_008",
+      "company": "Quantify Systems",
+      "role": "Backend Developer",
+      "package": "₹11 LPA",
+      "min_cgpa": 7.5,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "python",
+        "sql",
+        "databases",
+        "data structures"
+      ],
+      "deadline": null,
+      "description": "Designing and scaling backend services for a fintech transaction platform.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_009",
+      "company": "PixelForge Studios",
+      "role": "Mobile App Developer",
+      "package": "₹8 LPA",
+      "min_cgpa": 6.5,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology"
+      ],
+      "max_backlogs": 1,
+      "required_skills": [
+        "mobile development",
+        "javascript"
+      ],
+      "deadline": null,
+      "description": "Building cross-platform mobile apps used by millions of monthly active users.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1"
+      ]
+    },
+    {
+      "id": "job_010",
+      "company": "CoreMech Robotics",
+      "role": "Embedded Systems Engineer",
+      "package": "₹9.5 LPA",
+      "min_cgpa": 7.0,
+      "allowed_branches": [
+        "Electronics",
+        "Electrical Engineering",
+        "Mechanical Engineering"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "embedded systems",
+        "signal processing"
+      ],
+      "deadline": null,
+      "description": "Firmware and control systems development for autonomous robotics hardware.",
+      "rounds": [
+        "resume",
+        "aptitude",
+        "gd",
+        "interview1",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_011",
+      "company": "Everest Consulting",
+      "role": "Business Analyst",
+      "package": "₹7.5 LPA",
+      "min_cgpa": 6.0,
+      "allowed_branches": [
+        "Any"
+      ],
+      "max_backlogs": 2,
+      "required_skills": [
+        "aptitude",
+        "communication",
+        "sql"
+      ],
+      "deadline": null,
+      "description": "Client-facing analyst role across strategy and operations engagements.",
+      "rounds": [
+        "resume",
+        "coding",
+        "interview1",
+        "interview2",
+        "hr"
+      ]
+    },
+    {
+      "id": "job_012",
+      "company": "Vertex Interactive",
+      "role": "Full-Stack Developer",
+      "package": "₹13 LPA",
+      "min_cgpa": 7.5,
+      "allowed_branches": [
+        "Computer Science",
+        "Information Technology"
+      ],
+      "max_backlogs": 0,
+      "required_skills": [
+        "javascript",
+        "react",
+        "node",
+        "sql",
+        "web development"
+      ],
+      "deadline": null,
+      "description": "End-to-end feature ownership across a React/Node product suite.",
+      "rounds": [
+        "coding",
+        "interview1"
+      ]
+    }
+  ]
+}

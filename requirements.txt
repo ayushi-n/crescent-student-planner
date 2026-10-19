@@ -1,0 +1,8 @@
+# API
+fastapi==0.115.0
+uvicorn==0.31.0
+pydantic==2.9.2
+requests==2.32.3
+
+# PostgreSQL driver (used only when DATABASE_URL is set, e.g. on Vercel + Neon)
+pg8000==1.31.2
